@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisselgeld Berekening</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .result-section {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Wisselgeld Berekening</h1>
+        <div class="form-group">
+            <label for="aankoopBedrag">Aankoopbedrag:</label>
+            <input type="number" class="form-control" id="aankoopBedrag" placeholder="Kosten">
+        </div>
+        <div class="form-group">
+            <label for="betaaldBedrag">Betaaldbedrag:</label>
+            <input type="number" class="form-control" id="betaaldBedrag" placeholder="Betaald">
+        </div>
+        <button class="btn btn-primary btn-block" onclick="berekenWisselgeld()">Bereken Wisselgeld</button>
+        <div class="result-section">
+            <h2>Wisselgeld:</h2>
+            <p>Totaal wisselgeld: <span id="totaalWisselgeld"></span></p>
+            <ul id="wisselgeld" class="list-group"></ul>
+        </div>
+    </div>
+
+    <script>
+        async function berekenWisselgeld() {
+            const aankoopBedrag = parseFloat(document.getElementById('aankoopBedrag').value);
+            const betaaldBedrag = parseFloat(document.getElementById('betaaldBedrag').value);
+
+            const response = await fetch('http://localhost:8080/api/wisselgeld', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ aankoopBedrag: aankoopBedrag, betaaldBedrag: betaaldBedrag })
+            });
+
+            const responseData = await response.json();
+            const totaalWisselgeld = document.getElementById('totaalWisselgeld');
+            const wisselgeldLijst = document.getElementById('wisselgeld');
+            wisselgeldLijst.innerHTML = ''; 
+
+            totaalWisselgeld.textContent = responseData.totaalWisselgeld.toFixed(2) + " euro";
+
+            for (const [geldstuk, aantal] of Object.entries(responseData.wisselgeld)) {
+                const lijstItem = document.createElement('li');
+                lijstItem.className = 'list-group-item';
+                lijstItem.textContent = `${aantal} x ${geldstuk}`;
+                wisselgeldLijst.appendChild(lijstItem);
+            }
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
