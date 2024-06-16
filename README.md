@@ -12,8 +12,8 @@ Het bestaat uit een Java backend die de berekeningen uitvoert en een HTML/CSS/Ja
 ## Installatie
 
 1. **Clone  de repository:**
-   git clone https://github.com/gebruikersnaam/projectnaam.git
-   cd projectnaam
+   git clone https://github.com/DaphneTuimman/Omoda_assesment.git
+   cd Omoda_assesment
    
 2. **Bouw het project**
    mvn clean install
