@@ -15,11 +15,11 @@ Het bestaat uit een Java backend die de berekeningen uitvoert en een HTML/CSS/Ja
    git clone https://github.com/gebruikersnaam/projectnaam.git
    cd projectnaam
    
-2. ** Bouw het project **
+2. **Bouw het project**
    mvn clean install
    
-3. ** Start de app **
+3. **Start de app**
    ./mvnw spring-boot:run
    
-4. ** Open de app **
+4. **Open de app**
    Ga in je webbrowser naar: http://localhost:8080
