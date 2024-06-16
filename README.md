@@ -16,7 +16,7 @@ Het bestaat uit een Java backend die de berekeningen uitvoert en een HTML/CSS/Ja
    cd Omoda_assesment
    
 2. **Bouw het project**
-   mvn clean install
+   ./mvnw clean install
    
 3. **Start de app**
    ./mvnw spring-boot:run
