@@ -38,7 +38,7 @@ public class Controller {
             int aantal = (int) (wisselgeld / munt);
             wisselgeld -= aantal * munt;
             if (aantal > 0) {
-                wisselgeldMap.put((double)(munt) + " eurocent", aantal);
+                wisselgeldMap.put((double)(munt) + " euro", aantal);
             }
         }
 
