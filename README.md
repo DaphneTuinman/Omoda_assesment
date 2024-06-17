@@ -5,21 +5,23 @@ Het bestaat uit een Java backend die de berekeningen uitvoert en een HTML/CSS/Ja
 
 ## Vereisten
 
-- Java Development Kit (JDK) 8 of hoger
+- Java versie 22
 - Maven
-- Een moderne webbrowser
+- Een webbrowser
 
 ## Installatie
 
 1. **Clone  de repository:**
    git clone https://github.com/DaphneTuimman/Omoda_assesment.git
-   cd Omoda_assesment
    
-2. **Bouw het project**
+2. **Ga in de projectmap**
+   cd Omoda_assesement
+   
+3. **Bouw het project**
    ./mvnw clean install
    
-3. **Start de app**
+4. **Start de app**
    ./mvnw spring-boot:run
    
-4. **Open de app**
+5. **Open de app**
    Ga in je webbrowser naar: http://localhost:8080
